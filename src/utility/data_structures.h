@@ -12,10 +12,10 @@ namespace nav{
 		class Node{
 			public:
 			std::vector<T> elems;
-			size_t len;
+			int len=0;
 			std::shared_ptr<Node> next;
 			std::shared_ptr<Node> prev;
-			Node(size_t lenNode,std::shared_ptr<Node>  next): next(next){
+			Node(int lenNode,std::shared_ptr<Node>  next): next(next){
 			elems.reserve(lenNode);
 			};		
 		};

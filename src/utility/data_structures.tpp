@@ -49,12 +49,17 @@ namespace nav{
 									(*curr).next=(*next).next;
 									len--; //one element has been deleted, so length decreases
 								}else{
-									
+									int esize=elems.size();
 									elems.resize(5);
-									std::copy(nelems.end()-(lenNode-i),nelems.end(),elems.begin()+i);
-								//elems.insert(elems.begin()+i,nelems.end()-(lenNode-i),nelems.end());
-									nelems.erase(nelems.end()-(lenNode-i),nelems.end());
-									(*next).len=(*next).len-(lenNode-i);
+									std::cout<<*this<<"\n";
+									std::copy(nelems.end()-(esize+1),nelems.end(),elems.begin()+i);
+								//elems.insert(elems.begin()+i,nelems.end()-(lenNode-i),nelems.end()-;
+									nelems.erase(nelems.end()-(esize+1),nelems.end());
+									std::cout<<*this<<"\n";
+									(*next).len=(*next).len-esize;
+									std::cout<<-esize<<"Laenge\n";
+									std::cout<<(*next).len<<"nextlen \n";
+									std::cin.get();
 								}
 								
 							}else{

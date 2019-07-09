@@ -22,7 +22,7 @@ namespace test_data_structures{
 		for (int i=0;i<100;i++){
 			list.remove(i);
 		}
-		std::cout<<"LENGTH:"<<list.getLength()<<"\n";
+		std::cout<<"LENGTH:"<<list.getLength()<<"\n"<<std::endl;
 		std::cout<<list<<"\n";
 		assert(list.getLength()==0 && "The number of nodes after deletion is not correct.");
 
