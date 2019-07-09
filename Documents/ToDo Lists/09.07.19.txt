@@ -1,0 +1,29 @@
+Momo:
+
+#Create Min-Heap
+
+Our shortest path finding algorithm uses Dijkstra, a variant of A*. In order to find minimum nodes quickly, we utilize a min heap.
+
+Your task is to create an ordinary Min-Heap that fascilitates minimum extraction in O(log(n)).
+
+For information about how a heap is defined, look up your book or Wikipedia:
+https://en.wikipedia.org/wiki/Binary_heap
+
+Our heap needs to support at least the following operations:
+
+-Heapify
+Creates a heap class.
+
+-extract min
+Extracts the minium element. Don't forget to repair the heap structure, if it is
+violated after extraction.
+
+-insert
+Inserts an element according to the rules for min heaps.
+
+(optional)
+-print
+Prints the tree in standard output (such as std::cout). In order for this to work,
+the ofstream "<<" operator has to be overloaded. For an idea on how this can be done, see the code for the unrolled linked list in the src directory.
+
+Because we need to use the heap often, a language such as C++ is recommended.
