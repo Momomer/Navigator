@@ -1,0 +1,25 @@
+Try to allocate as little as possible on the heap.
+
+Example:
+
+Stack allocation:
+
+int a[3];
+
+Heap allocation:
+
+int* a=new int[3];
+
+Don't forget, that a std::vector also allocates its data on the heap!
+
+Why would we like to avoid heap allocation, you may ask? First and foremost, because
+it is slow! To allocate on the heap, the program usually has to request permission from the operating system, to gain access to heap memory. This procedure takes time.
+
+Most of our code is not that time critical per se, but it is good practice to use
+the heap as sparingly as possible.
+
+But don't be mad at yourself, if you resort to the heap.
+Our LinkedList_Unrolled class stores nodes on the heap, because its whole purpose is to be dynamically growable.
+
+Don't forget to deallocate unneeded heap memory using the "delete" function. Otherwise, we will
+leak memory. Even better, try to use smart pointers like std::unique_ptr and std::shared_ptr for such purposes, as they deallocate memory automatically  as soon as they go out of scope.

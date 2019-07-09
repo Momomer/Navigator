@@ -1,0 +1,63 @@
+You may think we have complete freedom, about how we choose
+the names of our variables.
+I mean, 
+
+int a=5;
+
+and
+
+int A=5;
+
+are fundamentally the same.
+Especially since these names are internally changed anyway (look up "Name Mangling), 
+we couldn't care less about how values are called, right?
+
+It may work for you, but don't forget that other people (including me!) want to read your code as well! 
+And even though we are not dyslexic, a good naming convention helps to reduce confusion and speed up comprehension.
+
+Remember:
+
+#Classes start with capital letters
+
+OK: 
+
+class Animal{};
+
+Not cool:
+
+class animal{};
+
+#Variables start with small letters
+
+OK:
+
+int a=5;
+
+Not cool:
+
+int A=5;
+
+#Functions start with small letters
+
+OK:
+
+void f(){}
+
+Not cool:
+
+void F(){}
+
+#Snake Case over CamelCase
+
+OK:
+
+void navigation_map(){}
+
+Not cool:
+
+void navigationMap(){}
+
+____
+
+These notational standards are set completely arbitrary. There is not advantage of using Snake Case over CamelCase for example. But the advantage is, that they are consistent. And consistency might speed up our comprehension, when we work with the code.
+

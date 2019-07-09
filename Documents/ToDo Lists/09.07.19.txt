@@ -15,7 +15,7 @@ Our heap needs to support at least the following operations:
 Creates a heap class.
 
 -extract min
-Extracts the minium element. Don't forget to repair the heap structure, if it is
+Extracts the minium element. Don't forget to repair the heap structure if it is
 violated after extraction.
 
 -insert
@@ -23,7 +23,7 @@ Inserts an element according to the rules for min heaps.
 
 (optional)
 -print
-Prints the tree in standard output (such as std::cout). In order for this to work,
+Prints the tree to standard output (such as std::cout). In order for this to work,
 the ofstream "<<" operator has to be overloaded. For an idea on how this can be done, see the code for the unrolled linked list in the src directory.
 
 Because we need to use the heap often, a language such as C++ is recommended.

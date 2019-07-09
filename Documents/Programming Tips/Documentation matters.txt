@@ -1,0 +1,13 @@
+Don't forget to document your code.
+
+Comments are very helpful to help everyone remember what you
+tried to accomplish.
+
+You can comment code by using two slashes, i.e. "//".
+
+For a multiline comment use " /* */". Example:
+
+/*
+This is a multiline
+comment.
+*/

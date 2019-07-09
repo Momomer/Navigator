@@ -1,0 +1,26 @@
+Unit tests solidify the skeleton of many elaborate projects.
+Each program should be accompanied by unit or integration tests.
+
+The tests usually reside in the /src/tests directory.
+
+
+#How to add a test
+Imagine your function resides in "/src/utility/data_structures.h".
+You will then add your tests in the "/src/tests/test_data_structures.cpp" file.
+
+Typically, tests have the naming convention:
+test_<file_name>.cpp
+
+#What makes a good test?
+You often hear that a good test must be exhaustive. But sometimes there
+are too many testing possibilities to consider! If you want to test the 
+addition "+" operator for example, you could in theory verify its validicity by adding 
+all combinations of numbers, i.e. 1+1,1+2,1+3,... 
+As you can imagine, even with 100 programmers this would take way too long!
+In addition, such repeated tests are not very meaningful, because the functionality
+they test is strongly correlated. If I can add 5+7 correctly, I will probably be able to add
+3+2 as well. Therefore, try to have a diverse set of tests rather than a strictly exhaustive one.
+
+For example, for integers the addition "+" operator could be sufficiently tested by considering
+1+0 (testing identity element), -3+4 (going from negative to positive), 5+2,2+5 (testing commutativity), 89-89 (testing inverse element), int_max+1 (testing overflow), int_min-1 (testing underflow).
+Of course this will not give us complete certainty that "+" is going to work correctly every time, but given the circumstances this test can be considered sufficient. 

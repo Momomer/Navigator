@@ -49,7 +49,7 @@ namespace nav{
 									(*curr).next=(*next).next;
 									len--; //one element has been deleted, so length decreases
 								}else{
-									std::cout<<"i:" <<(lenNode-i)<<" \n";
+									
 									elems.resize(5);
 									std::copy(nelems.end()-(lenNode-i),nelems.end(),elems.begin()+i);
 								//elems.insert(elems.begin()+i,nelems.end()-(lenNode-i),nelems.end());
