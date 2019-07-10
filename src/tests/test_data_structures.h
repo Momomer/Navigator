@@ -14,6 +14,7 @@ namespace test_data_structures{
 
 	}
 
+	//Tests removing elements from a list.
 	void test_remove(){
 		nav::LinkedList_Unrolled<int> list;
 		for (int i=0;i<100;i++){
@@ -22,15 +23,26 @@ namespace test_data_structures{
 		for (int i=0;i<100;i++){
 			list.remove(i);
 		}
-		std::cout<<"LENGTH:"<<list.getLength()<<"\n"<<std::endl;
-		std::cout<<list<<"\n";
 		assert(list.getLength()==0 && "The number of nodes after deletion is not correct.");
-
 	}
 
+
+	//Tests searching a list.
+	void test_search(){
+		nav::LinkedList_Unrolled<int> list;
+		for (int i=0;i<5;i++){
+			list.add(i);
+		}
+		list.remove(0);
+		assert(list.search(4) && "Error occured during searching the list.");
+		assert(!list.search(0) && "Error occured during searching the list.");
+	}
+
+	//Runs all tests
 	void run(){
 		test_add();
 		test_remove();
+		test_search();
 	}
 
 

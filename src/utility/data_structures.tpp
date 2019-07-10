@@ -12,24 +12,25 @@ namespace nav{
 			}
 			if (curr->elems.size()<lenNode){
 				curr->elems.push_back(key);
-				curr->len++;
 			}
 			else{
 				curr->next=(std::make_shared<Node>(lenNode,nullptr));
 				(*curr->next).elems.push_back(key);
-				(*curr->next).len++;
 				len++;
 			}
 		}
 		else{
 			head=(std::make_shared<Node>(lenNode,nullptr));	
 			(*head).elems.push_back(key);
-			(*head).len++;
 			len++;
 		}
 	}
 	
-	/*Remove an element from the list. Use operation sparingly. In order to keep the list balanced,*/
+	/*Remove an element from the list. Use operation sparingly, because in the worst case,
+	a lot of elements have to be reallocated.
+	If after removal, the current node fills less than half its capacity, 
+	an element from the neighbor will be taken. If the neighbor will have less than half
+	its capacity after such a theft, then both nodes will be merged.*/
 	template<class T>
 	bool LinkedList_Unrolled<T>::remove(T key){
 		if (head){
@@ -42,29 +43,24 @@ namespace nav{
 					if (key==(*curr).elems[i]){
 						std::shared_ptr<Node> next=(*curr).next;
 						if (next){
-							if (elems.size()-1<0.5*lenNode){
+							int halfFloor =0.5*lenNode;
+							int halfCeil=halfFloor+1;
+							if (elems.size()-1<halfFloor){
 								std::vector<T>& nelems=(*next).elems;
-								if (nelems.size()<0.5*lenNode){
-									std::copy(nelems.begin(),nelems.end(),elems.begin()+i);
+								if (nelems.size()<halfCeil){
+									int prevSize=elems.size()-1;
+									elems.erase(elems.begin()+i);
+									elems.resize(elems.size()+nelems.size());
+									std::copy(nelems.begin(),nelems.end(),elems.begin()+prevSize);
 									(*curr).next=(*next).next;
 									len--; //one element has been deleted, so length decreases
 								}else{
-									int esize=elems.size();
-									elems.resize(5);
-									std::cout<<*this<<"\n";
-									std::copy(nelems.end()-(esize+1),nelems.end(),elems.begin()+i);
-								//elems.insert(elems.begin()+i,nelems.end()-(lenNode-i),nelems.end()-;
-									nelems.erase(nelems.end()-(esize+1),nelems.end());
-									std::cout<<*this<<"\n";
-									(*next).len=(*next).len-esize;
-									std::cout<<-esize<<"Laenge\n";
-									std::cout<<(*next).len<<"nextlen \n";
-									std::cin.get();
+									elems[i]=nelems.back();
+									nelems.pop_back();
 								}
 								
 							}else{
 								elems.erase(elems.begin()+i);
-								(*curr).len--;
 							}
 						}else{
 							elems.erase(elems.begin()+i);
@@ -75,10 +71,8 @@ namespace nav{
 								else{
 									head=nullptr;
 								}
-								len--;
-								
+								len--;					
 							}
-							(*curr).len--;
 						}
 						return true;
 					}
