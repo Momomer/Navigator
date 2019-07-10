@@ -45,7 +45,7 @@ namespace test_performance_data_structures{
 
 	//Runs all tests
 	void run(){
-	long int n=10; //number of elements each test creates
+	long int n=10000000; //number of elements each test creates
 	std::thread t1(test_add,n,n);
 	//std::thread t2(test_remove,n);
 	t1.join();
