@@ -1,0 +1,66 @@
+
+
+Performance Results
+The following table lists the time measured of functions declared in test_performance_data_structures.h.
+As the configuration of the testing computer can greatly influence the results, the corresponding hardware is indicated. In addition, the compiler plus optimization level is seen.
+
+PC1:
+Intel Core i3 530@2.93 GHz, 4 CPU(s), 4GB RAM
+
+
+Function: test_add
+PC
+Compiler
+Flags
+n
+Time in Seconds
+
+
+
+
+
+
+g++
+-O3
+
+
+PC1
+g++
+-O3
+50000
+3.44
+PC1
+g++
+-O3
+100000
+13.45
+PC1
+g++
+-O3
+200000
+61.51
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
