@@ -29,7 +29,7 @@ namespace nav{
 		void add(T key);
 		bool remove(T key);
 		bool search(T key);
-		std::shared_ptr<Node> getHead(){
+		std::shared_ptr<Node> getHead() const{
 			return head;
 		}
 		int getLength(){
@@ -38,6 +38,24 @@ namespace nav{
 		
  		friend std::ostream& operator<<(std::ostream& os, LinkedList_Unrolled<int>& m);
 
+	};
+
+	template<class T>
+	class Heap_Min{
+	private:
+	std::vector<T> heap;
+	int height=0;
+	
+	public:
+	Heap_Min(){
+	}
+	Heap_Min(const std::vector<T>& input);
+	
+	void add(T key);
+	T extract();
+	void repair_up(int index);
+	void repair_down(int index);
+	friend std::ostream& operator<<(std::ostream& os, Heap_Min<int>& h);
 	};
 
 

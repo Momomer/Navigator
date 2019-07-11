@@ -8,37 +8,11 @@ PC1:
 Intel Core i3 530@2.93 GHz, 4 CPU(s), 4GB RAM
 
 
-Function: test_add
-PC
-Compiler
-Flags
-n
-Time in Seconds
-
-
-
-
-
-
-g++
--O3
-
-
-PC1
-g++
--O3
-50000
-3.44
-PC1
-g++
--O3
-100000
-13.45
-PC1
-g++
--O3
-200000
-61.51
+Function: test_add, PC1
+Compiler		Flags	n		Time in Seconds
+g++		-O3	50000		3.44
+g++		-O3	100000		13.45
+g++		-O3	200000		61.51
 
 
 

@@ -1,6 +1,8 @@
 #include <ostream>
 #include<iostream>
 #include "data_structures.h"
+#include <algorithm>
+#include <cmath>
 
 namespace nav{
 	template<class T>
@@ -118,6 +120,84 @@ namespace nav{
     			return os;
 		}
 	
+	template<class T>
+	Heap_Min<T>::Heap_Min(const std::vector<T>& input):heap(input){
+		int depth=std::log2(heap.size()); //depth of tree starting from the root
+		int h=1;
+		
+		
+	}
+
+	template<class T>
+	void Heap_Min<T>::add(T key){	
+		
+		for (auto&x: heap){
+			if (x<T()){
+				x=key;
+				return;
+			}
+		}
+		int nElements=static_cast<size_t>(2,height);
+		heap.resize(nElements);
+		height+=1;
+		//heap[nElements-1]
+	}
+
+	template<class T>
+	T Heap_Min<T>::extract(){
+		T root=heap[0];
+		repair_down(0);
+		return root;
+	}
+
+	template<class T>
+	void Heap_Min<T>::repair_up(int index){
+		bool repair_ongoing=true;
+		int current=index;
+		while (repair_ongoing){
+			size_t parent=0.5*(current-1);
+			if (heap[current]<heap[parent]){
+				T temp=heap[current];
+				heap[current]=heap[parent];
+				heap[parent]=heap[current];
+			}
+			else{
+				repair_ongoing=false;
+			}
+		}
+	}
+
+	template<class T>
+	void Heap_Min<T>::repair_down(int index){
+		bool repair_ongoing=true;
+		int current=index;
+		while (repair_ongoing){
+			size_t left_child=2*(current+1)-1;
+			size_t right_child=2*(current+1);
+			size_t minimum=std::min(heap[left_child],heap[right_child]);
+			if (heap[current]>heap[minimum]){
+				T temp=heap[current];
+				heap[current]=heap[minimum];
+				heap[minimum]=heap[current];
+				
+			}
+			else{
+				repair_ongoing=false;
+			}
+		}
+	}
+
+
+		/*Overload that enables us to print the heap via std::cout.*/
+		std::ostream& operator<<(std::ostream& os, Heap_Min<int>& h) { 
+
+			for (auto&x: h.heap){
+				os<<x<<"   ";
+			}
+    			return os;
+		}
+
+
 }
 
 

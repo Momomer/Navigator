@@ -1,4 +1,5 @@
 #include <iostream>
+#include<vector>
 #include "utility/data_structures.h"
 
 /*Creates an unrolled linked list.*/
@@ -15,6 +16,11 @@ int main(){
 	list.add(9);
 	list.add(10);
 	list.add(11);
-	std::cout<<"Content of the list:\n";
-	std::cout<<list<<"\n";
+	//std::cout<<"Content of the list:\n";
+	//std::cout<<list<<"\n";
+	
+	std::vector<int> v={9,2,4,6,1,3};
+	auto heap=nav::Heap_Min<int>();
+	heap.add(2);
+	std::cout<<heap;
 }

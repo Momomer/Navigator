@@ -27,3 +27,6 @@ Prints the tree to standard output (such as std::cout). In order for this to wor
 the ofstream "<<" operator has to be overloaded. For an idea on how this can be done, see the code for the unrolled linked list in the src directory.
 
 Because we need to use the heap often, a language such as C++ is recommended.
+
+An example of a binary heap as been added to the src/utility/datastructures.h file.
+It'll might help you while you are creating the tree.

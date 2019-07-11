@@ -1,0 +1,15 @@
+This is the stuff that would be great to have finished by July 14:
+
+Min Heap (including performance and unit tests)
+
+If time is available, Dijkstra's Algorithm (excluding performance and unit tests)
+should also be completed.
+
+General outlook for the next 7 days (until July 18):
+
+Finish Min Heap
+Finish Dijkstra's Algorithm
+Finish Graph Class (both, adjacency list and linked list representation)
+Mental model for the general framework of the Navigation system
+
+Will be tough but doable!
