@@ -21,6 +21,12 @@ int main(){
 	
 	std::vector<int> v={9,2,4,6,1,3};
 	auto heap=nav::Heap_Min<int>();
+	heap.add(9);
 	heap.add(2);
+	heap.add(4);
+	heap.add(6);
+	heap.add(1);
+	heap.add(3);
+	heap.extract();
 	std::cout<<heap;
 }

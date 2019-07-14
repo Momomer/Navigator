@@ -130,61 +130,85 @@ namespace nav{
 
 	template<class T>
 	void Heap_Min<T>::add(T key){	
-		
-		for (auto&x: heap){
-			if (x<T()){
-				x=key;
-				return;
-			}
-		}
-		int nElements=static_cast<size_t>(2,height);
-		heap.resize(nElements);
-		height+=1;
-		//heap[nElements-1]
+		heap.push_back(key);
+		repair_up(heap.size()-1);
 	}
 
 	template<class T>
 	T Heap_Min<T>::extract(){
+		size_t n=heap.size()-1;
 		T root=heap[0];
+		heap[0]=heap[n];
+		heap[n]=root;
+		heap.pop_back();
 		repair_down(0);
 		return root;
 	}
 
 	template<class T>
 	void Heap_Min<T>::repair_up(int index){
-		bool repair_ongoing=true;
-		int current=index;
-		while (repair_ongoing){
-			size_t parent=0.5*(current-1);
-			if (heap[current]<heap[parent]){
-				T temp=heap[current];
-				heap[current]=heap[parent];
-				heap[parent]=heap[current];
-			}
-			else{
-				repair_ongoing=false;
-			}
+		if (index>0){
+			bool repair_ongoing=true;
+			int current=index;
+			while (repair_ongoing){
+				size_t parent=0.5*(current-1);
+				if (heap[current]<heap[parent]){
+					T temp=heap[current];
+					heap[current]=heap[parent];
+					heap[parent]=temp;
+					current=parent;
+				}
+				else{
+					repair_ongoing=false;
+				}
+			}		
 		}
+
 	}
 
 	template<class T>
 	void Heap_Min<T>::repair_down(int index){
 		bool repair_ongoing=true;
 		int current=index;
+		size_t n=heap.size();
+		
 		while (repair_ongoing){
 			size_t left_child=2*(current+1)-1;
 			size_t right_child=2*(current+1);
-			size_t minimum=std::min(heap[left_child],heap[right_child]);
+			size_t minimum;
+			size_t limit= std::log2(n);//up to this depth the tree is a complete binary tree
+			if (left_child<n && right_child<n){
+				if (heap[left_child]<heap[right_child]){
+					minimum=left_child;
+				}
+				else{
+					minimum=right_child;
+				}
+				
+			}
+			else if(left_child<n){
+				minimum=left_child;
+			}
+			else if (right_child<n){
+				minimum=right_child;
+			}
+			else{
+				minimum=current;
+			}
 			if (heap[current]>heap[minimum]){
 				T temp=heap[current];
 				heap[current]=heap[minimum];
-				heap[minimum]=heap[current];
+				heap[minimum]=temp;
+				current=minimum;
 				
 			}
 			else{
 				repair_ongoing=false;
 			}
 		}
+		
+		
+		
 	}
 
 

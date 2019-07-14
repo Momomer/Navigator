@@ -1,4 +1,4 @@
-Momo:
+Momer:
 
 #Create Min-Heap
 
@@ -11,17 +11,17 @@ https://en.wikipedia.org/wiki/Binary_heap
 
 Our heap needs to support at least the following operations:
 
--Heapify
+-Heapify [DONE]
 Creates a heap class.
 
--extract min
+-extract min [DONE]
 Extracts the minium element. Don't forget to repair the heap structure if it is
 violated after extraction.
 
--insert
+-insert [DONE]
 Inserts an element according to the rules for min heaps.
 
-(optional)
+(optional)[DONE]
 -print
 Prints the tree to standard output (such as std::cout). In order for this to work,
 the ofstream "<<" operator has to be overloaded. For an idea on how this can be done, see the code for the unrolled linked list in the src directory.

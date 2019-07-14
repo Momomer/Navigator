@@ -1,0 +1,9 @@
+Momer:
+The heap appears to be nearly finished. Good job. Now we have to test it. 
+Create performance and correctness tests. In the former, the number of elements "n" should
+be at least ten million. 
+
+Because the heap function is called at least once every 2 seconds, the following should hold true:
+
+#The combined operation of creating a heap with 10000 elements and extracting them all sequentially should not take more than 0.1 seconds on PC2
+and ideally not more than 0.3 seconds on PC1.

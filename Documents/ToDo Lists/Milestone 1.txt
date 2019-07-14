@@ -1,4 +1,4 @@
-This is the stuff that would be great to have finished by July 14:
+This is the stuff that would be great to have finished by July 17:
 
 Min Heap (including performance and unit tests)
 

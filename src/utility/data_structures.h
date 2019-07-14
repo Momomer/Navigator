@@ -44,7 +44,6 @@ namespace nav{
 	class Heap_Min{
 	private:
 	std::vector<T> heap;
-	int height=0;
 	
 	public:
 	Heap_Min(){
@@ -55,6 +54,9 @@ namespace nav{
 	T extract();
 	void repair_up(int index);
 	void repair_down(int index);
+	const std::vector<T>& getHeap() const{
+		return heap;
+	}
 	friend std::ostream& operator<<(std::ostream& os, Heap_Min<int>& h);
 	};
 

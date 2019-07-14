@@ -4,7 +4,7 @@
 
 namespace test_data_structures{
 	//Tests insertion of an element into the list.	
-	void test_add(){
+	void test_linked_list_add(){
 		nav::LinkedList_Unrolled<int> list;
 
 		for (int i=0;i<100;i++){
@@ -15,7 +15,7 @@ namespace test_data_structures{
 	}
 
 	//Tests removing elements from a list.
-	void test_remove(){
+	void test_linked_list_remove(){
 		nav::LinkedList_Unrolled<int> list;
 		for (int i=0;i<100;i++){
 			list.add(i);
@@ -28,7 +28,7 @@ namespace test_data_structures{
 
 
 	//Tests searching a list.
-	void test_search(){
+	void test_linked_list_search(){
 		nav::LinkedList_Unrolled<int> list;
 		for (int i=0;i<5;i++){
 			list.add(i);
@@ -38,11 +38,29 @@ namespace test_data_structures{
 		assert(!list.search(0) && "Error occured during searching the list.");
 	}
 
+	//Tests, if heap property is maintained after random insertions and deletions
+	void test_heap_correctness(){
+		nav::Heap_Min<int> heap;
+		for (int i=99;i>=0;i--){
+			heap.add(i);
+		}
+		for (int i=0;i<100;i++){
+			heap.extract();
+		}
+		const std::vector<int>& storage=heap.getHeap();
+		for (int i=1;i<storage.size();i++){
+			std::cout<<i<< " ";
+			assert(storage[i]>storage[0.5*(i-1)] && "The min heap property is not maintained after sequences of insertions and extractions.");
+		}
+	}
+
+
 	//Runs all tests
 	void run(){
-		test_add();
-		test_remove();
-		test_search();
+		test_linked_list_add();
+		test_linked_list_remove();
+		test_linked_list_search();
+		test_heap_correctness();
 	}
 
 
