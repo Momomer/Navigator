@@ -29,4 +29,5 @@ int main(){
 	heap.add(3);
 	heap.extract();
 	std::cout<<heap;
+
 }

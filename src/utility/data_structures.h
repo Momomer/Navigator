@@ -49,7 +49,11 @@ namespace nav{
 	Heap_Min(){
 	}
 	Heap_Min(const std::vector<T>& input);
-	
+	//Changes the key of an existing node
+	void decreasePriority(T key);
+	bool isEmpty() {
+		return heap.size() == 0;
+	}
 	void add(T key);
 	T extract();
 	void repair_up(int index);
@@ -60,7 +64,104 @@ namespace nav{
 	friend std::ostream& operator<<(std::ostream& os, Heap_Min<int>& h);
 	};
 
+	class DijkstraNode {
+	public:
+		double distance;
+		int identifier;
+		DijkstraNode() : distance(0), identifier(0) {
 
+		};
+		DijkstraNode(int id, double _distance) :identifier(id), distance(_distance) {
+
+		}
+		friend bool operator< (const DijkstraNode &c1, const DijkstraNode &c2);
+		friend bool operator> (const DijkstraNode &c1, const DijkstraNode &c2);
+		friend bool operator== (const DijkstraNode &c1, const DijkstraNode &c2);
+		DijkstraNode& operator= (const DijkstraNode &node) {
+			(*this).distance = node.distance;
+			(*this).identifier = node.identifier;
+			return (*this);
+		}
+	};
+
+
+	bool operator< (const DijkstraNode &c1, const DijkstraNode &c2) {
+		return c1.distance < c2.distance;
+	};
+
+	bool operator> (const DijkstraNode &c1, const DijkstraNode &c2) {
+		return c1.distance > c2.distance;
+	};
+
+	//Two nodes are equal, if they share the same identifier
+	bool operator== (const DijkstraNode &c1, const DijkstraNode &c2) {
+		if (c1.identifier == c2.identifier) {
+			return true;
+		}
+		else {
+			return false;
+		}
+	}
+
+
+	/*Abstract Base Class for edges*/
+	class Edge {
+	public:
+		virtual double getWeight(size_t source, size_t end) = 0;
+		virtual int getNumNodes() = 0;
+	};
+
+	class Edge_Adjacency_Matrix :public Edge {
+	private:
+		std::vector<double> weights;
+		int dimN = 0;
+	public:
+		Edge_Adjacency_Matrix(std::vector<double> _weights, size_t N) :weights(_weights), dimN(N) {
+
+		}
+		virtual double getWeight(size_t source, size_t end) override {
+			return weights[end + dimN * source];
+		}
+		virtual int getNumNodes() override {
+			return dimN;
+		}
+
+	};
+
+
+
+	class Edge_Linked_List :public Edge {
+	private:
+		std::vector<LinkedList_Unrolled<DijkstraNode>> weights;
+	public:
+
+		Edge_Linked_List(std::vector<LinkedList_Unrolled<DijkstraNode>>& _weights) :weights(_weights) {
+
+		}
+
+		virtual double getWeight(size_t source, size_t end) override {
+
+			//Search the node
+			auto curr = weights[source].getHead();
+			while (curr) {
+				for (auto& x : (*curr).elems) {
+					if (x.identifier == end) {
+						return x.distance;
+					}
+				}
+				curr = curr->next;
+			}
+		
+			return 0.0;
+		}
+		virtual int getNumNodes() {
+			return weights.size();
+		}
+	};
+
+
+	//Dijkstra's shortest path algorithm
+	std::vector<double> dijkstra(Edge& edges, size_t source);
 	
 }
 

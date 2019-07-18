@@ -211,6 +211,24 @@ namespace nav{
 		
 	}
 
+	//Changes the key of an existing node
+	template<class T>
+	void Heap_Min<T>::decreasePriority(T key) {		
+		for (size_t i = 0; i < heap.size(); i++) {
+			if (heap[i] == key) {
+				heap[i] = key;
+				int current_index = i;
+				int index_parent = 0.5*(current_index - 1);
+				if (heap[index_parent] > heap[i]) { //repair upwards
+				Heap_Min<T>::repair_up(current_index);
+				}
+				else { //repair downwards
+				Heap_Min<T>::repair_down(current_index);
+			}
+		}
+		}
+	}
+
 
 		/*Overload that enables us to print the heap via std::cout.*/
 		std::ostream& operator<<(std::ostream& os, Heap_Min<int>& h) { 
@@ -221,6 +239,41 @@ namespace nav{
     			return os;
 		}
 
+	std::vector<double> dijkstra(Edge& edges, size_t source) {
+	int numNodes = edges.getNumNodes();
+	std::vector<double> dist(numNodes, INFINITY);
+	std::vector<size_t> prev(numNodes, 0);
+
+	dist[source] = 0.0;
+
+	std::vector<DijkstraNode> elems;
+	elems.resize(numNodes);
+	for (size_t i = 0; i < numNodes; i++) {
+		elems[i] = DijkstraNode(i,dist[i]);
+	}
+
+
+
+	Heap_Min<DijkstraNode> Q(elems);
+	while (!Q.isEmpty()) {
+		auto u = Q.extract();
+		for (int j = 0; j < numNodes; j++) {			
+			double len=edges.getWeight(u.identifier, j);
+			
+			if (len != 0) { //check if they are neighbors
+				double alt = dist[u.identifier] + len;
+				if (alt < dist[j]) {
+					dist[j] = alt;
+					prev[j] = u.identifier;
+					Q.decreasePriority(DijkstraNode(j, dist[j]));
+				}
+			}
+			
+		}
+		
+	}
+	return dist;
+}
 
 }
 
