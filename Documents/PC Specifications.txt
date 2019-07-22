@@ -1,0 +1,15 @@
+PC1:
+Intel Core i3 530@2.93 GHz, 
+4 CPU(s), 
+4GB RAM
+
+
+
+PC2
+
+NVIDIA Geforce GTX 570M
+Intel Core i7 2670 QM @2.2 GHz
+12 GB RAM DDR3 @1333MHz
+L1 Cache 256 KB
+L2 Cache 1 MB
+L3 Cache 6 MB

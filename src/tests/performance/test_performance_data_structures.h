@@ -85,14 +85,14 @@ namespace test_performance_data_structures{
 
 	//Runs all tests
 	void run(){
-	long int n=10000; //number of elements each test creates
-	std::thread t1(test_linked_list_add,n,n);
-	std::thread t2(test_linked_list_remove,n);
-	std::thread t3(test_dijkstra_linked_list, n);
+	long int n=20000; //number of elements each test creates
+	//std::thread t1(test_linked_list_add,n,n);
+	//std::thread t2(test_linked_list_remove,n);
+	//std::thread t3(test_dijkstra_linked_list, n);
 	std::thread t4(test_dijkstra_adjacency_matrix, n);
-	t1.join();
-	t2.join();
-	t3.join();
+	//t1.join();
+	//t2.join();
+	//t3.join();
 	t4.join();
 	}
 
