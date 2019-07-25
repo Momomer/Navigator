@@ -12,4 +12,4 @@ Finish Dijkstra's Algorithm [DONE]
 Finish Graph Class (both, adjacency list and linked list representation) [DONE]
 Mental model for the general framework of the Navigation system [DONE]
 
-Will be tough but doable!
+All done!

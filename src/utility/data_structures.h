@@ -1,3 +1,6 @@
+/*These are various helper function. Also includes Dijkstra's algorithm, that is used
+for pathfinding.*/
+
 #pragma once //include guard
 
 #include <vector>
@@ -63,7 +66,9 @@ namespace nav{
 	}
 	friend std::ostream& operator<<(std::ostream& os, Heap_Min<int>& h);
 	};
-
+	
+	/*These nodes are only used within Dijkstra's algorithm.
+	Otherwise*/
 	class DijkstraNode {
 	public:
 		double distance;

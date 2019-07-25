@@ -1,9 +1,10 @@
+/*Showcase of this repository's functions.*/
 #include <iostream>
 #include<vector>
 #include "utility/data_structures.h"
 
-/*Creates an unrolled linked list.*/
 int main(){
+	//Create unrolled linked list and add elements to it
 	auto list=nav::LinkedList_Unrolled<int>();
 	list.add(1);
 	list.add(2);
@@ -16,9 +17,9 @@ int main(){
 	list.add(9);
 	list.add(10);
 	list.add(11);
-	//std::cout<<"Content of the list:\n";
-	//std::cout<<list<<"\n";
+	std::cout<<"Content of the unrolled list:\n"<<list<<"\n";
 	
+	//Create a heap and add elements to it:
 	std::vector<int> v={9,2,4,6,1,3};
 	auto heap=nav::Heap_Min<int>();
 	heap.add(9);
@@ -28,6 +29,6 @@ int main(){
 	heap.add(1);
 	heap.add(3);
 	heap.extract();
-	std::cout<<heap;
+	std::cout<<"Content of the heap array (linearized):\n "<<heap<<"\n";
 
 }

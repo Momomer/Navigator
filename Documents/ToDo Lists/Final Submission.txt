@@ -1,0 +1,11 @@
+This project is now finished.
+Development was short (less than three weeks) but everything was manageable.
+Performance and correctness tests have been created. Especially the latter has been
+a valuable tool that uncovered many bugs.
+
+The performance analysis was also interesting. The unrolled linked list does not scale well,
+as it has quadratic complexity when adding new elements (the way we do it now). The heap
+appears to be fine, a Fibonacci Heap was not needed as the running time is reasonable.
+Comparing the adjacency matrix and unrolled linked list implementation of Dijkstra's algorithm,
+we see that the former is much much more efficient. Is this significant difference
+in performance solely due to cache misses in the linked list version? We don't know yet. Either we do not know, why the desktop i3 350 processor appears to be as quick (or even quicker) than our mobile i7. A quick look at Intel's website tells us, that the i3 has a higher clockrate. Nevertheless, the i7 beats it at everything else. This could also be investigated.

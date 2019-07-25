@@ -1,3 +1,10 @@
+/*This is the file specification for a map. A map is represented as a connection of nodes. All nodes live
+in a two dimensional coordinate system. The X,Y values give the coordinates of a node respective to the grid.
+Each node also has a unique ID. This enable the user to create an index, e.g. add labels to some nodes (e.g. node
+with id=3 could be restaurant).
+
+Each new map derives from the base class Map.*/
+
 #pragma once
 
 #include<vector>
@@ -6,9 +13,9 @@ namespace nav {
 	class MapNode {
 	public:
 		int id; //ID of the node
-		int locationX; //x value of its coordinates
-		int locationY; //y value of its coordinates
-		MapNode(int _id, int locX, int locY) :id(_id), locationX(locX), locationY(locY) {
+		doublelocationX; //x value of its coordinates
+		double locationY; //y value of its coordinates
+		MapNode(int _id, double locX, double locY) :id(_id), locationX(locX), locationY(locY) {
 
 		}
 		friend std::ostream& operator<<(std::ostream& os, MapNode& m);
@@ -16,7 +23,7 @@ namespace nav {
 
 	};
 
-	/*Overload that enables us to print the list via std::cout.*/
+	/*Overload that enables us to print the map nodes via std::cout.*/
 	std::ostream& operator<<(std::ostream& os, MapNode& m) {
 
 			os << "[id: "<<m.id<<" ,locationX: "<<m.locationX<<"  ,locationY: "<<m.locationY<<"]";
@@ -32,7 +39,7 @@ namespace nav {
 		}
 	};
 
-
+		//This map is unfinished
 		class Frankfurt:public Map {
 		private:
 			std::vector<bool> neighbors = {false,true,true,
