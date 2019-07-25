@@ -89,11 +89,11 @@ namespace test_performance_data_structures{
 	std::thread t1(test_linked_list_add,n,n);
 	std::thread t2(test_linked_list_remove,n);
 	std::thread t3(test_dijkstra_linked_list, n);
-	std::thread t4(test_dijkstra_adjacency_matrix, n);
-	t1.join();
-	t2.join();
+	//std::thread t4(test_dijkstra_adjacency_matrix, n);
+	//t1.join();
+	//t2.join();
 	t3.join();
-	t4.join();
+	//t4.join();
 	}
 
 
